@@ -32,8 +32,6 @@ const UserSchema = new mongoose.Schema(
         role: {index: true, required:true, type:String, enum : ['user', 'admin'], default: 'user'},
         experience: {required:true, type:String, enum : ['beginner', 'intermediate', 'advanced'], default: 'user'},
         instruments: [{required: true, type: String}],
-        jamSessions: [{ type: Schema.Types.ObjectId, ref: 'JamSession' }],
-        bands: [{ type: Schema.Types.ObjectId, ref: 'Band' }]
     },  { timestamps: true }
 )
 UserSchema.pre('save', function(next) {

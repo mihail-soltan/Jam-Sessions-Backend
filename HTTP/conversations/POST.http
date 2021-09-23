@@ -1,0 +1,9 @@
+POST http://localhost:3000/conversations
+Content-Type: application/json
+
+{
+        "name": "Judas Priest tribute",
+        "createdBy": "614afdb544449579b8528bc9",
+        "participants": ["614afbadbdd597f983d9bc06", "614afdb544449579b8528bc9"],
+        "description": "looking for guitar and bass player"
+}

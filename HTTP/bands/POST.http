@@ -1,0 +1,10 @@
+POST http://localhost:3000/bands
+Content-Type: application/json
+
+{
+    "name": "32nd of August",
+    "createdBy": "614afbadbdd597f983d9bc06",
+    "members": ["614afdb544449579b8528bc9", "614afbadbdd597f983d9bc06"],
+    "genres": ["surf rock", "heavy metal", "thrash metal"],
+    "description": "lmao very descriptive"
+}

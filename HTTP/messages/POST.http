@@ -1,0 +1,9 @@
+POST http://localhost:3000/messages
+Content-Type: application/json
+
+{
+        "title": "check out this awesome title 152152412312",
+        "owner_id": "614afdb544449579b8528bc9", 
+        "group_id": "614c2febd0328d9b148e67e7",
+        "content": "just another test lmao 62534122131"
+}

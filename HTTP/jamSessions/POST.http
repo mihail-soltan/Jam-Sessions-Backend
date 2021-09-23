@@ -1,0 +1,13 @@
+POST http://localhost:3000/jamsessions
+Content-Type: application/json
+
+{
+    "name": "Let's play some psychedelic rock",
+    "createdBy": "614afdb544449579b8528bc9",
+    "members": ["614afbadbdd597f983d9bc06", "614afdb544449579b8528bc9"],
+    "genres": ["psychedelic-rock", "progressive-rock"],
+    "description": "Pink Floyd covers, improv",
+    "experience": "advanced",
+    "instruments": ["electric guitar", "drums", "keyboard", "bass"],
+    "date": "2021-09-28"
+}
