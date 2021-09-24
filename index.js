@@ -10,7 +10,7 @@ import jamSessionRouter from './routes/jamSessions.js';
 import bandRouter from './routes/bands.js';
 import ConversationRouter from './routes/conversations.js';
 import MessageRouter from './routes/messages.js';
-
+import colors from 'colors';
 const app = express()
 const upload = multer({ dest: 'uploads/' })
 
@@ -37,6 +37,6 @@ connectToDatabase().then((err) => {
         return console.log(err)
     }
     app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`)
+        console.log(`Server is running on port ${PORT}`.trap.rainbow)
     })
 })
