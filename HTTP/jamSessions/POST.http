@@ -1,4 +1,4 @@
-POST http://localhost:3000/jamsessions
+POST http://localhost:3001/jamsessions
 Content-Type: application/json
 
 {

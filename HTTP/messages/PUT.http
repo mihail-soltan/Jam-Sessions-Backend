@@ -1,0 +1,7 @@
+PUT http://localhost:3001/messages/one/614c3f6268a4a4f3381736fc
+Content-Type: application/json
+
+{
+    "content": "no way lmao, did it work?",
+    "title": "let's see if the title updates"
+}

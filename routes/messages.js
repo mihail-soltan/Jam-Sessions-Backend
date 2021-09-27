@@ -3,8 +3,10 @@ import Router from 'express';
 import {
     getAllMessages,
     getMessagesByOwnerId,
+    getOneMessage,
     createMessage,
-    deleteMessage
+    deleteMessage,
+    updateMessage
 } from "../controllers/messages.js"
 import Message from '../models/message.js';
 
@@ -21,7 +23,9 @@ MessageRouter
     .get(getMessagesByOwnerId)
 
 MessageRouter
-    .route("/:id")
+    .route("/one/:id")
     .delete(deleteMessage)
+    .get(getOneMessage)
+    .put(updateMessage)
 
 export default MessageRouter
