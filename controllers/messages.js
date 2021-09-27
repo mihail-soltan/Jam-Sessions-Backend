@@ -23,6 +23,35 @@ export async function getMessagesByOwnerId(request, response) {
     }
 }
 
+export async function getOneMessage(request, response) {
+    try {
+        Message.findById(request.params.id).populate("owner_id").populate("group_id")
+        .then(messagesFound => {
+            if(!messagesFound){
+                return response.status(404).end()
+            } return response.status(200).json(messagesFound)
+        })
+        console.log(request.params)
+    } catch(error){
+        response.status(500).json({ message: error.message})
+    }
+}
+
+export async function updateMessage(request, response) {
+    try {
+        Message.findByIdAndUpdate({_id: request.params.id}, request.body, {new: true}).populate("owner_id").populate("group_id")
+        .then(Message.findOne({_id: request.params.id}))
+        .then(messagesFound => {
+            if(!messagesFound){
+                return response.status(404).end()
+            } return response.status(200).json(messagesFound)
+        })
+        console.log(request.params)
+    } catch(error){
+        response.status(500).json({ message: error.message})
+    }
+}
+
 export async function createMessage(request, response) {
     try {
         const newMessage = await Message.create(request.body);
