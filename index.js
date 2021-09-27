@@ -10,6 +10,7 @@ import jamSessionRouter from './routes/jamSessions.js';
 import bandRouter from './routes/bands.js';
 import ConversationRouter from './routes/conversations.js';
 import MessageRouter from './routes/messages.js';
+import GenreRouter from './routes/genres.js';
 import colors from 'colors';
 const app = express()
 const upload = multer({ dest: 'uploads/' })
@@ -31,6 +32,8 @@ app.use("/bands", bandRouter)
 app.use("/conversations", ConversationRouter)
 
 app.use("/messages", MessageRouter)
+
+app.use("/genres", GenreRouter)
 
 connectToDatabase().then((err) => {
     if(err){
