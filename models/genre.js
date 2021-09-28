@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 
 const GenreSchema = new mongoose.Schema(
     {
-        name: {type: String, required: true, unique: true},
-        description: {type: String, required: false},
+        label: {type: String, required: true, unique: true},
+        value: {type: String, required: true},
     }
 )
 

@@ -2,6 +2,6 @@ POST http://localhost:3001/genres
 Content-Type: application/json
 
 {
-    "name": "punk",
-    "description": "a bunch of info about punk, check it out"
+    "label": "hardcore-punk",
+    "value": "hardcore-punk"
 }
