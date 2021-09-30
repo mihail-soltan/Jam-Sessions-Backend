@@ -22,6 +22,23 @@ const UserSchema = new mongoose.Schema(
                 message: props => 'The specified phone number is already associated with an account.'
             }
         },
+        email: {
+            required: false,
+            type:String, 
+            validate: {
+                validator: async function(email) {
+                    const user = await this.constructor.findOne({ email });
+                    if(user) {
+                        if(this.id === user.id) {
+                            return true;
+                        }
+                        return false;
+                    }
+                    return true;
+                },
+                message: props => 'The specified email number is already associated with an account.'
+            }
+        },
         primaryContact: {index: true, required:true, type:String, enum : ['phone', 'email'], default: 'email'},
         phoneConfirmed: {index: true, required:true, type:Boolean, default: false},
         emailConfirmed: {index: true, required:true, type:Boolean, default: false},
