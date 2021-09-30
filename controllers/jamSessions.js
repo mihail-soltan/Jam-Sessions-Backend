@@ -9,6 +9,15 @@ export async function getAllSessions(request, response){
     }
 }
 
+export async function searchSessions(request, response){
+    try {
+        const result = await JamSession.find({experience: "advanced"}).populate("createdBy").populate("members")
+        response.json(result)
+    } catch(err) {
+        response.status(500).json({message: error.message})
+    }
+}
+
 export async function getOneSession(request, response){
     try {
         JamSession.findById(request.params.id).populate("createdBy").populate("members")
