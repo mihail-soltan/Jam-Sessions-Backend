@@ -10,6 +10,8 @@ const JamSessionSchema = new mongoose.Schema(
         description: {required: false, type: String},
         experience: {required:true, type:String, enum : ['beginner', 'intermediate', 'advanced'], default: 'intermediate'},
         instruments: [{required: true, type: String}],
+        street: {required: true, type: String},
+        plz: {required: true, type: String},
         date: {required: true, type: Date}
     }
 )
