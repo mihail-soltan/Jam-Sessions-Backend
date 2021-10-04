@@ -35,6 +35,8 @@ app.use("/messages", MessageRouter)
 
 app.use("/genres", GenreRouter)
 
+
+
 connectToDatabase().then((err) => {
     if(err){
         return console.log(err)
