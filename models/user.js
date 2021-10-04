@@ -53,7 +53,7 @@ const UserSchema = new mongoose.Schema(
         isDeleted: {type: Boolean, required: true, default: false},
         role: {index: true, required:true, type:String, enum : ['user', 'admin'], default: 'user'},
         experience: {required:true, type:String, enum : ['beginner', 'intermediate', 'advanced'], default: 'user'},
-        instruments: [{required: true, type: String}],
+        instruments: [{required: true, type: Object}],
     },  { timestamps: true }
 )
 UserSchema.pre('save', async function(next) {
