@@ -2,10 +2,12 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "firstName": "Stephen",
-    "lastName": "Carpenter",
-    "userName": "stephencarpenter",
-    "primaryContact": "phone",
-    "experience": "advanced",
+    "firstName": "Mihail",
+    "lastName": "Soltan",
+    "userName": "mihailsoltan",
+    "email": "mihail.soltan1@gmail.com",
+    "password": "28aC1Dc131080pHD",
+    "primaryContact": "email",
+    "experience": "intermediate",
     "instruments": ["electric guitar", "7 string guitar"]
 }

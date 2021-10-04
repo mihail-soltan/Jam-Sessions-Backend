@@ -1,10 +1,17 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+
 
 const UserSchema = new mongoose.Schema(
     {
         firstName: {required: true, type: String},
         lastName: {required: true, type: String},
-        userName: {required: true, type: String, unique: true},
+        userName: {type: String,
+            required: [true, 'Please add a name'],
+            maxlength: [50, 'Only max 50 chars are allowed for the name'],
+            unique: true
+        },
         phone: {
             required: false,
             type:String, 
@@ -23,21 +30,19 @@ const UserSchema = new mongoose.Schema(
             }
         },
         email: {
-            required: false,
-            type:String, 
-            validate: {
-                validator: async function(email) {
-                    const user = await this.constructor.findOne({ email });
-                    if(user) {
-                        if(this.id === user.id) {
-                            return true;
-                        }
-                        return false;
-                    }
-                    return true;
-                },
-                message: props => 'The specified email number is already associated with an account.'
-            }
+            type: String,
+            required: [true, 'Please add an email'],
+            unique: true,
+            match: [
+              /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+              'Please add a valid email',
+            ]            
+        },
+        password: {
+            type: String,
+            required: [true, 'Please add a password'],
+            minlength: 8,
+            select: false
         },
         primaryContact: {index: true, required:true, type:String, enum : ['phone', 'email'], default: 'email'},
         phoneConfirmed: {index: true, required:true, type:Boolean, default: false},
@@ -51,29 +56,19 @@ const UserSchema = new mongoose.Schema(
         instruments: [{required: true, type: String}],
     },  { timestamps: true }
 )
-UserSchema.pre('save', function(next) {
-    var user = this;
-
-    // only hash the password if it has been modified (or is new)
-    if (!user.isModified('password')) return next();
-
-    // generate a salt
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-        if (err) return next(err);
-
-        // hash the password using our new salt
-        bcrypt.hash(user.password, salt, function(err, hash) {
-            if (err) return next(err);
-            // override the cleartext password with the hashed one
-            user.password = hash;
-            next();
-        });
-    });
-});
-
-UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-    return bcrypt.compare(candidatePassword, this.password);
-};
+UserSchema.pre('save', async function(next) {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+  });
+  
+  UserSchema.methods.getSignedJwtToken = function() {
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET)
+  }
+  
+  // math user entered password ot hashed password in db
+  UserSchema.methods.matchPassword = async function(enteredPass) {
+    return await bcrypt.compare(enteredPass, this.password)
+  }
 
 const User = mongoose.model("User", UserSchema);
 export default User;
