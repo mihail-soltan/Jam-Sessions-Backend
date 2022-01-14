@@ -4,7 +4,8 @@ import {
     getAllSessions,
     createJamSession,
     getOneSession,
-    searchSessions
+    searchSessions,
+    updateJamSession
 } from "../controllers/jamSessions.js"
 
 const jamSessionRouter = Router()
@@ -21,5 +22,6 @@ jamSessionRouter
 jamSessionRouter
     .route("/:id")
     .get(getOneSession)
+    .put(updateJamSession)
 
 export default jamSessionRouter

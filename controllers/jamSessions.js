@@ -40,3 +40,12 @@ export async function createJamSession(request, response) {
         response.status(400).json({ message: error.message})
     }
 }
+
+export async function updateJamSession(request, response) {
+    try {
+        const updatedSession = await JamSession.findByIdAndUpdate(request.params.id, request.body, {new: true});
+        response.json(updatedSession)
+    } catch(error) {
+        response.status(400).json({ message: error.message})
+    }
+}

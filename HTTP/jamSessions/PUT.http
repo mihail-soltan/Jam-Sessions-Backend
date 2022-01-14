@@ -1,0 +1,62 @@
+PUT http://localhost:3001/jamSessions/615d77d814702a12ade14ae1
+Content-Type: application/json
+
+{
+  "_id": "615d77d814702a12ade14ae1",
+  "name": "Let's see how this works",
+  "city": "Berlin",
+  "createdBy": {
+       "_id": "615b18afbbc6f6648f0ffb1c",
+    "firstName": "Mihail",
+    "lastName": "Soltan",
+    "userName": "mihailsoltan",
+    "email": "mihail.soltan1@gmail.com",
+    "primaryContact": "email",
+    "phoneConfirmed": false,
+    "emailConfirmed": false,
+    "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+    "wantsSpam": false,
+    "isOnline": false,
+    "isDeleted": false,
+    "role": "user",
+    "experience": "intermediate",
+    "instruments": [
+      "electric guitar",
+      "7 string guitar"
+    ],
+    "createdAt": "2021-10-04T15:07:27.610Z",
+    "updatedAt": "2021-10-04T15:07:27.610Z",
+    "__v": 0
+  },
+  "members": ["615cb9ef63b22a306567781f"],
+  "genres": [
+    {
+      "_id": "6152c791bda9d2a437ae05f8",
+      "label": "black-metal",
+      "value": "black-metal",
+      "__v": 0
+    },
+    {
+      "_id": "6152c796bda9d2a437ae05fa",
+      "label": "death-metal",
+      "value": "death-metal",
+      "__v": 0
+    }
+  ],
+  "description": "LMAO CHECK THIS OUT",
+  "experience": "advanced",
+  "instruments": [
+    {
+      "label": "electric guitar",
+      "value": "electric guitar"
+    },
+    {
+      "label": "drums",
+      "value": "drums"
+    }
+  ],
+  "street": "Henri-Dunant Str. 20",
+  "plz": "13585",
+  "date": "2021-11-05T00:00:00.000Z",
+  "__v": 0
+}
