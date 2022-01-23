@@ -54,6 +54,7 @@ const UserSchema = new mongoose.Schema(
         role: {index: true, required:true, type:String, enum : ['user', 'admin'], default: 'user'},
         experience: {required:true, type:String, enum : ['beginner', 'intermediate', 'advanced'], default: 'user'},
         instruments: [{required: true, type: Object}],
+        messages: [{type: mongoose.Schema.Types.ObjectId, ref: 'Message'}]
     },  { timestamps: true }
 )
 UserSchema.pre('save', async function(next) {
